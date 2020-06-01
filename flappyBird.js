@@ -22,6 +22,7 @@ pipeSouth.src = "images/pipeSouth.png";
 function draw(){
     
     ctx.drawImage(bg,0,0);
+    ctx.drawImage(bird,bX,bY);
     
 }
 

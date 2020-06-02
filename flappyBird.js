@@ -22,7 +22,7 @@ pipeSouth.src = "images/pipeSouth.png";
 function draw(){
     
     ctx.drawImage(bg,0,0);
-    
+
     for(var i = 0; i < pipe.length; i++){
         
         constant = pipeNorth.height+gap;
@@ -37,6 +37,13 @@ function draw(){
                 y : Math.floor(Math.random()*pipeNorth.height)-pipeNorth.height
             }); 
         }
+
+     // detect collision
+        
+     if( bX + bird.width >= pipe[i].x && bX <= pipe[i].x + pipeNorth.width && (bY <= pipe[i].y + pipeNorth.height || bY+bird.height >= pipe[i].y+constant) || bY + bird.height >=  cvs.height - fg.height){
+        location.reload(); // reload the page
+    }
+    
     ctx.drawImage(bird,bX,bY);
     requestAnimationFrame(draw);
     

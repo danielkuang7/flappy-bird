@@ -22,9 +22,24 @@ pipeSouth.src = "images/pipeSouth.png";
 function draw(){
     
     ctx.drawImage(bg,0,0);
+    
+    for(var i = 0; i < pipe.length; i++){
+        
+        constant = pipeNorth.height+gap;
+        ctx.drawImage(pipeNorth,pipe[i].x,pipe[i].y);
+        ctx.drawImage(pipeSouth,pipe[i].x,pipe[i].y+constant);
+             
+        pipe[i].x--;
+        
+        if( pipe[i].x == 125 ){
+            pipe.push({
+                x : cvs.width,
+                y : Math.floor(Math.random()*pipeNorth.height)-pipeNorth.height
+            }); 
+        }
     ctx.drawImage(bird,bX,bY);
+    requestAnimationFrame(draw);
     
 }
 
 draw();
-
